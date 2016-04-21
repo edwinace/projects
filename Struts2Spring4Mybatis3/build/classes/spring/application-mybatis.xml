@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
+	xmlns:cache="http://www.springframework.org/schema/cache" xmlns:spring="http://www.infinispan.org/schemas/spring" 
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd http://www.directwebremoting.org/schema/spring-dwr http://www.directwebremoting.org/schema/spring-dwr-3.0.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-3.2.xsd http://www.infinispan.org/schemas/spring http://www.infinispan.org/schemas/infinispan-spring-5.0.xsd 
+	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd"
+	default-autowire="byName">
+	
+	<bean id="skmbwSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- sqlSessionFactory에 대응하는 자료원천은 사무관리기transactionManager의 자료원천과 일치해야 한다.-->
+		<property name="dataSource" ref="skmbwDataSource" />
+		<!--MyBatis의 기초배치화일경로를 지정-->
+		<property name="configLocation" value="classpath:/mybatis/mybatis-config-skmbw.xml"/>
+		<!--Mapper영사화일의 위치를 지정 만일 영사화일이 대응하는 입구와 동일하다면 동일한 경로하에 있어야 한다-->
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:mapper/*Mapper.xml</value>
+			</list>
+		</property>
+	</bean>	
+
+	<!-- Mapper방식을 기록: 역시 특정한 mapper를 지정할수 없으며 삽입홀더의 방식을 자동적으로 사용
+	하여 각종 Mapper들을 기록한다. 배치는 아래와 같다-->
+	<bean id="skmbwMapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 만일 basePackage속성을만을 지정한다면 인터페이스를 모두 주입한다 -->
+		<property name="basePackage" value="cn.com.dce.user,cn.com.dce.common" />
+		<property name="markerInterface" value="cn.com.dce.mybatis.mapper.BaseMapper"/><!-- 해당 인터페이스의 자식인터페이스만 주입 -->
+		<property name="annotationClass" value="cn.com.dce.mybatis.annotation.DaoMapper"/><!-- 해당 주해를 표기한 인터페이스만 주입 -->
+		<property name="sqlSessionFactoryBeanName" value="skmbwSqlSessionFactory"/><!-- 만일 sqlSessionFactory를 사용한다면 많은 자료기지는bean을 비법적으로 배치하는 문제를 현시한다 -->
+	</bean>
+	
+</beans>

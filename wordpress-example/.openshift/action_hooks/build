@@ -1,0 +1,49 @@
+#!/bin/bash
+
+# To force a specific version of WordPress, set this variable:
+#
+# install_version="4.1"
+
+# Used in this script only
+#
+current_version_dir=${OPENSHIFT_DATA_DIR}current
+
+#
+# If WordPress is already installed in the current gear, there
+# is nothing to build :-)
+#
+[ -d "${current_version_dir}" ] && exit 0
+
+#
+# Download the latest stable version if no install_version specified,
+# as long as the latest version is upgrade-compatible:
+#
+if [ -z "$install_version" ]; then
+  install_version=$(curl -s "https://api.wordpress.org/core/version-check/1.7/?version=4.1" | python -c 'import sys, json; latest = json.load(sys.stdin)["offers"][0]; print latest["version"] if latest["response"] == "upgrade" else "4.1"')
+fi
+
+# Download and install WordPress
+#
+install_dir=${OPENSHIFT_BUILD_DEPENDENCIES_DIR}${install_version}
+mkdir -p $install_dir
+
+pushd ${install_dir} >/dev/null
+curl -Ls http://wordpress.org/wordpress-${install_version}.tar.gz > wordpress-${install_version}.tar.gz
+
+# Verify the sources
+#
+tarball_md5=$(md5sum wordpress-${install_version}.tar.gz | cut -d ' ' -f 1)
+wordpress_md5=$(curl -Ls http://wordpress.org/wordpress-${install_version}.tar.gz.md5)
+
+if [ "${tarball_md5}" != "${wordpress_md5}" ]; then
+  echo "ERROR: WordPress ${install_version} MD5 checksum mismatch. The wordpress tar file that was downloaded does not match the signature that it should have. Assure that the right tar file and checksum are being acquired by the .openshift/action_hooks/build file."
+  exit 1;
+fi
+
+# Install WordPress
+#
+tar --strip-components=1 -xzf wordpress-${install_version}.tar.gz
+rm -rf wordpress-${install_version}.tar.gz
+echo $install_version > ${OPENSHIFT_BUILD_DEPENDENCIES_DIR}.current_version
+
+popd >/dev/null

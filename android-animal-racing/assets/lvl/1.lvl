@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level width="5000" height="480">
+    <entity x="100" y="330" type="shape"/>
+    <entity x="300" y="330" type="shape"/>
+    <entity x="500" y="330" type="shape"/>
+    <entity x="700" y="330" type="shape"/>
+    <entity x="800" y="330" type="shape"/>
+    <entity x="900" y="330" type="shape"/>
+    <entity x="1100" y="330" type="shape"/>
+    <entity x="1500" y="330" type="shape"/>
+    <entity x="2200" y="330" type="shape"/>
+    <entity x="4900" y="330" type="shape"/>
+</level>

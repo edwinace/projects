@@ -1,0 +1,102 @@
+#!/bin/bash
+
+# This deploy hook gets executed after dependencies are resolved and the
+# build hook has been run but before the application has been started back
+# up again.  This script gets executed directly, so it could be python, php,
+# ruby, etc.
+
+dest_dir=${OPENSHIFT_DATA_DIR}current
+
+current_version=$(cat ${OPENSHIFT_BUILD_DEPENDENCIES_DIR}.current_version)
+install_dir=${OPENSHIFT_BUILD_DEPENDENCIES_DIR}${current_version}
+
+if [ ! -d "${dest_dir}" ]; then
+  mkdir -p $dest_dir
+  cp -rf ${install_dir}/* ${dest_dir}/
+fi
+
+# Replace the php/ directory with provided clean WordPress installation
+#
+if [ -d ${OPENSHIFT_REPO_DIR}php ]; then
+  rm -rf ${OPENSHIFT_REPO_DIR}php
+fi
+ln -sf ${dest_dir} ${OPENSHIFT_REPO_DIR}php
+
+if [ ! -d ${OPENSHIFT_DATA_DIR}uploads ]; then
+    mkdir ${OPENSHIFT_DATA_DIR}uploads
+fi
+
+if [ ! -d ${OPENSHIFT_DATA_DIR}languages ]; then
+    mkdir ${OPENSHIFT_DATA_DIR}languages
+fi
+
+
+# If this is initial installation, copy the default themes and plugins
+# from official WordPress installation
+#
+if [ ! -d ${OPENSHIFT_DATA_DIR}plugins ]; then
+  mv ${dest_dir}/wp-content/plugins ${OPENSHIFT_DATA_DIR}plugins
+fi
+
+if [ ! -d ${OPENSHIFT_DATA_DIR}themes ]; then
+  mv ${dest_dir}/wp-content/themes ${OPENSHIFT_DATA_DIR}themes
+fi
+
+# Users can place their own plugins and themes into .openshift/ directory
+# inside their GIT repository.
+#
+echo "Copying WordPress plugins from .openshift/plugins"
+cp -rf $OPENSHIFT_REPO_DIR/.openshift/plugins/* ${OPENSHIFT_DATA_DIR}plugins/ 2>/dev/null
+
+echo "Copying WordPress themes from .openshift/themes"
+cp -rf $OPENSHIFT_REPO_DIR/.openshift/themes/* ${OPENSHIFT_DATA_DIR}themes/ 2>/dev/null
+
+echo "Copying WordPress languages from .openshift/languages"
+cp -rf $OPENSHIFT_REPO_DIR/.openshift/languages/* ${OPENSHIFT_DATA_DIR}languages/ 2>/dev/null
+
+# Add multisite upload dir
+#
+if [ ! -d $OPENSHIFT_DATA_DIR/blogs.dir ]; then
+    mkdir $OPENSHIFT_DATA_DIR/blogs.dir
+fi
+
+ln -sf ${OPENSHIFT_DATA_DIR}blogs.dir ${OPENSHIFT_REPO_DIR}php/wp-content/
+ln -sf ${OPENSHIFT_DATA_DIR}plugins   ${OPENSHIFT_REPO_DIR}php/wp-content/
+ln -sf ${OPENSHIFT_DATA_DIR}themes    ${OPENSHIFT_REPO_DIR}php/wp-content/
+ln -sf ${OPENSHIFT_DATA_DIR}languages    ${OPENSHIFT_REPO_DIR}php/wp-content/
+ln -sf ${OPENSHIFT_DATA_DIR}uploads   ${OPENSHIFT_REPO_DIR}php/wp-content/
+
+# Copy the OpenShift wp-config.php file
+
+cp -f ${OPENSHIFT_REPO_DIR}.openshift/config/wp-config.php ${dest_dir}/wp-config.php
+
+
+# Use repository htaccess if exists 
+if [  -f ${OPENSHIFT_REPO_DIR}.openshift/config/.htaccess ]; then
+  cp -f ${OPENSHIFT_REPO_DIR}.openshift/config/.htaccess ${dest_dir}/.htaccess
+fi
+
+set -e
+
+if [ -z "$OPENSHIFT_MYSQL_DB_HOST" ]
+then
+    echo 1>&2
+    echo "Could not find mysql database.  Please run:" 1>&2
+    echo "rhc cartridge add -a $OPENSHIFT_APP_NAME -c mysql-5.1" 1>&2
+    echo "then make a sample commit (add whitespace somewhere) and re-push" 1>&2
+    echo 1>&2
+fi
+
+if [ -z "$OPENSHIFT_MYSQL_DB_HOST" ]
+then
+    exit 5
+fi
+
+# Confirm database exists, if not create it
+if ! /usr/bin/mysql -u "$OPENSHIFT_MYSQL_DB_USERNAME" --password="$OPENSHIFT_MYSQL_DB_PASSWORD" -h "$OPENSHIFT_MYSQL_DB_HOST" -P "$OPENSHIFT_MYSQL_DB_PORT" -e "select * from wp_commentmeta;" "$OPENSHIFT_APP_NAME" > /dev/null 2>&1
+then
+    echo
+    echo "Database schema not yet added, WordPress is ready for install by visiting the site."
+else
+    echo "Database already configured."
+fi

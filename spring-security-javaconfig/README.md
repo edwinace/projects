@@ -1,0 +1,1 @@
+This project has moved. The Spring Security Java configuration can now be found in spring-security-config-3.2.0.RELEASE+ as part of the Spring Security distribution. The Spring Security OAuth sample code can be found at https://github.com/spring-projects/spring-security-oauth-javaconfig and will eventually be merged into Spring Security OAuth.

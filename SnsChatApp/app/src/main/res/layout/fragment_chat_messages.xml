@@ -1,0 +1,16 @@
+<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="0dip"
+    android:background="@color/sns_white"
+    android:cacheColorHint="#FF55098D"
+    tools:context="com.avans.ronald.snschatapp.activities.ViewAllChatsActivity"
+    android:id="@android:id/list"
+    android:divider="@null"
+    android:dividerHeight="5dp"
+    android:paddingLeft="20px"
+    android:paddingRight="20px"
+    android:paddingTop="20px"
+    android:stackFromBottom="true"
+    android:transcriptMode="alwaysScroll">
+</ListView>

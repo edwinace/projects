@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="grass" tilewidth="32" tileheight="32">
+  <image source="grass.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="2" name="street" tilewidth="32" tileheight="32">
+  <image source="street.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="3" name="street2" tilewidth="32" tileheight="32">
+  <image source="street2.png" width="32" height="32"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjZGBgYETCzDgwEw5xRgJ41LxR80bNGzVv1LzhaR4AjTYDXQ==
+  </data>
+ </layer>
+ <objectgroup name="objects"/>
+</map>

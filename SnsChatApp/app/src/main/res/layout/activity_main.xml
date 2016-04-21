@@ -1,0 +1,75 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/logo_sns"
+        android:contentDescription="@string/content_description_sns_logo"
+        android:padding="20dp"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:paddingLeft="4.0dip"
+        android:paddingTop="5.0dip"
+        android:paddingRight="4.0dip"
+        android:paddingBottom="1.0dip"
+        android:layout_below="@+id/imageView"
+        android:gravity="center"
+        android:id="@+id/first_row"
+        android:layout_width="fill_parent" android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:gravity="top">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/view_chats"
+                android:id="@+id/view_chats_button"
+                android:onClick="onClick"
+                android:drawableTop="@drawable/chat"
+                android:layout_below="@+id/imageView"
+                android:layout_alignParentStart="true" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Instellingen"
+                android:id="@+id/settings_button"
+                android:onClick="onClick"
+                android:drawableTop="@drawable/settings"
+                android:layout_below="@+id/view_chats_button"
+                android:layout_alignParentStart="true" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:gravity="top">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/faq_button"
+                android:id="@+id/faq_button"
+                android:onClick="onClick"
+                android:drawableTop="@drawable/faq"
+                android:layout_above="@+id/settings_button"
+                android:layout_toEndOf="@+id/view_chats_button" />
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

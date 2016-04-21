@@ -1,0 +1,24 @@
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# Intellij files
+*.iml
+.idea/
+*.ipr
+*.iws
+
+# Generated files
+bin/
+gen/
+
+# Java class files
+*.class
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# built application files
+*.apk
+*.ap_

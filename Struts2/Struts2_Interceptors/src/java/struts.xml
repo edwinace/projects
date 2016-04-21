@@ -1,0 +1,37 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <!-- Configuration for the default package. -->
+    <package name="default" extends="struts-default">
+    </package>
+    
+    <package name="interceptor" namespace="/interceptor" extends="struts-default">
+        <interceptors>
+            <interceptor name="miInterceptor" 
+                         class="pe.edu.rodriguez.actions.interceptors.UnInterceptor" />
+            <interceptor-stack name="miPilaInterceptor">
+                <interceptor-ref name="miInterceptor" />
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack>
+        </interceptors>
+        
+        <action name="bienvenido" class="pe.edu.rodriguez.actions.UnaAccion">
+            <interceptor-ref name="miPilaInterceptor" />
+            <result>/interceptor/bienvenido.jsp</result>
+        </action>
+    </package>
+    
+    <package name="waitandexec" namespace="/wait-exec" extends="struts-default">
+        <action name="proceso-largo" 
+                class="pe.edu.rodriguez.actions.LargoProcesoAction">
+            <interceptor-ref name="execAndWait">
+                <param name="delay">1000</param>
+                <param name="delaySleepInterval">500</param>
+            </interceptor-ref>
+            <result name="wait">/wait-exec/wait.jsp</result>
+            <result name="success">/wait-exec/success.jsp</result>
+        </action>
+    </package>
+</struts>

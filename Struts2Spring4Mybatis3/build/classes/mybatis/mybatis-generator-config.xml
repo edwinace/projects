@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<!-- jdbc구동의 jar화일위치. 자체본인의 구동화일이 존재하는 위치로 수정하려면 절대경로를 사용하시오 -->
+	<classPathEntry location="E:\ojdbc\ojdbc-6.jar" />
+	<context id="context1">
+		<property name="javaFileEncoding" value="UTF-8"/>
+		<!-- jdbc련결배치 -->
+		<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver" connectionURL="jdbc:oracle:thin:@172.20.0.151:1521:orcljl" userId="ths_gov" password="ths_gov" />
+		
+		<!-- 실제화일의 위치 -->
+		<javaModelGenerator targetPackage="cn.com.dce.user.model" targetProject="ssm" /><!-- targetProject안에 임의의 항목속에 코드를 산생 -->
+		
+		<!-- Mapper.xml화일의 위치文件的位置，sql반영화일의 위치 -->
+		<sqlMapGenerator targetPackage="cn.com.dce.user.mapper" targetProject="ssm" />
+		
+		<!-- Mapper.java화일의 위치 역시 DAO입구화일위치 -->
+		<javaClientGenerator targetPackage="cn.com.dce.user.dao" targetProject="ssm" type="XMLMAPPER" />
+		
+		<!-- 반영하려는 표. schema는 지정할수 없음 -->
+		<table schema="" tableName="users">
+			<!-- 만일 문자단명과 속성명이 일치하지 않으면 부하가 걸린다. colume은 DB마당, property는 Model속성-->
+			<!-- <columnOverride column="user_name" property="name" /> -->
+		</table>
+	</context>
+</generatorConfiguration>

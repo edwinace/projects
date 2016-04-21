@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="100" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="grass" tilewidth="32" tileheight="32">
+  <image source="grass.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="2" name="street" tilewidth="32" tileheight="32">
+  <image source="street.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="3" name="street2" tilewidth="32" tileheight="32">
+  <image source="street2.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="4" name="tree ugly" tilewidth="101" tileheight="171">
+  <image source="tree ugly.png" width="101" height="171"/>
+ </tileset>
+ <tileset firstgid="5" name="wood block" tilewidth="101" tileheight="171">
+  <image source="wood block.png" width="101" height="171"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="20" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztzCEOACAQA8EW/v9nLIbzJCNWbTJN0qv9aA2vQzwej8fj8Xg8Ho/H4/F4PB6Px+PxeDwej8fj/eAd524RlQ==
+  </data>
+ </layer>
+ <objectgroup name="objects"/>
+ <layer name="Tile Layer 2" width="20" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt10EKwCAMRFEXev8ri3vRxEiC8b9VC3bhTGxpKW9qgmsANlHniXMsR1b5zDql5z1pRmSJU3VzDx1tnuT/Fms/nv3yLxlP07dkrcf8MSt+ot4HN9ZlxPd3LdtsWPpmVv7Lj/36PBvlt/0CwNABdyEAsQ==
+  </data>
+ </layer>
+ <objectgroup name="obstacles">
+  <object x="414.607" y="1193.2" width="97.4005" height="107.944" rotation="-0.202867"/>
+  <object x="159" y="1191" width="99" height="111"/>
+  <object x="386" y="1610" width="94" height="105"/>
+  <object x="192" y="1673" width="99" height="117"/>
+  <object x="448.5" y="1863.5" width="99" height="117"/>
+  <object x="127.5" y="1863.5" width="99" height="117"/>
+  <object x="288.5" y="2087.5" width="99" height="117"/>
+  <object x="128" y="1449" width="195" height="116"/>
+  <object x="448.5" y="808.5" width="99" height="117"/>
+  <object x="129.5" y="807.5" width="99" height="117"/>
+  <object x="193.5" y="679.5" width="99" height="117"/>
+  <object x="353.5" y="682.5" width="99" height="117"/>
+  <object x="287.5" y="487.5" width="99" height="117"/>
+  <object x="449.5" y="360.5" width="99" height="117"/>
+  <object x="128.5" y="328.5" width="99" height="117"/>
+  <object x="191" y="2" width="292" height="93"/>
+ </objectgroup>
+</map>

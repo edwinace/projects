@@ -1,0 +1,37 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <constant name="struts.custom.i18n.resources" value="global" />
+    <!-- Configuration for the default package. -->
+    <package name="default" extends="struts-default">
+    </package>
+    <package name="action" namespace="/login" extends="struts-default">
+        <action name="login">
+            <result>/login/login.jsp</result>
+        </action>
+        <action name="bienvenido" class="pe.edu.rodriguez.actions.IniciarSesion">
+            <result>/login/bienvenido.jsp</result>
+        </action>
+    </package>
+    
+    <package name="user" namespace="/user" extends="struts-default">
+        <action name="login">
+            <result>/ActionError/login.jsp</result>
+        </action>
+        <action name="validacionUsuario" class="pe.edu.rodriguez.actions.LoginAction">
+            <result>/ActionError/bienvenido.jsp</result>
+            <result name="input">/ActionError/login.jsp</result>
+        </action>
+    </package>
+    
+    <package name="modeldriven" namespace="/modeldriven" extends="struts-default">
+        <action name="cliente" class="pe.edu.rodriguez.actions.Cliente">
+            <result>/ModelDriven/Cliente.jsp</result>
+        </action>
+        <action name="cliente-detalle" class="pe.edu.rodriguez.actions.Cliente">
+            <result>/ModelDriven/ClienteDetalle.jsp</result>
+        </action>
+    </package>
+</struts>

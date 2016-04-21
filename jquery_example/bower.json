@@ -1,0 +1,22 @@
+{
+  "name": "jquery_example",
+  "version": "1.6.1",
+  "homepage": "https://github.com/mudge/jquery_example",
+  "authors": [
+    "Paul Mucur"
+  ],
+  "description": "jQuery plugin to populate form inputs with example text that disappears on focus",
+  "main": "jquery.example.js",
+  "keywords": [
+    "jquery",
+    "example",
+    "placeholder",
+    "plugin"
+  ],
+  "license": "BSD & GPL",
+  "ignore": [
+    "node_modules",
+    "bower_components",
+    "test"
+  ]
+}

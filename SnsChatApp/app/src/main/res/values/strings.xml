@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- application strings -->
+    <string name="app_name">SnsChat</string>
+    <string name="action_settings">Instellingen</string>
+    <string name="view_chats">Open chats</string>
+    <string name="title_activity_view_all_chats">Alle chats</string>
+    <string name="title_activity_chat">Chatten</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="new_chat">Chat aanmaken</string>
+    <string name="choose_category">Kies een categorie:</string>
+    <string name="question_description">Stel een vraag:</string>
+    <string name="create_chat_button">Vraag insturen</string>
+    <string name="sender_id">228487985956</string>
+    <string name="register_button">Registreren</string>
+    <string name="title_activity_main">SNS chat app</string>
+    <string name="faq_button">FAQ</string>
+    <string name="content_description_sns_logo">SNS logo</string>
+    <string name="sync_faq">sync_faq</string>
+    <!-- Company strings -->
+    <string name="company_name">SNS bank</string>
+
+    <!-- User string -->
+    <string name="own_message_identifier">Jij</string>
+    <string name="title_activity_create_chat">Maak een chat aan</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="placeholder_username">Gebruikersnaam</string>
+    <string name="title_activity_register">Registreren</string>
+    <string name="title_activity_faq">FAQ</string>
+
+    <!-- API -->
+    <string name="external_api_url">http://178.62.252.32:8080</string>
+    <string name="auth_username">sns</string>
+    <string name="auth_password">JH(5t7ywq4ufh974H$(U)t84w</string>
+    <string name="title_activity_pincode">Voer pincode in</string>
+    <string name="title_activity_settings">Instellingen</string>
+
+</resources>

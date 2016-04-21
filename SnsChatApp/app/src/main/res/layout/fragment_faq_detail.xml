@@ -1,0 +1,37 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.avans.ronald.snschatapp.fragments.FaqDetailFragment"
+    android:orientation="vertical"
+    android:weightSum="6">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/faq_answer_title"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/faq_answer_content"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:layout_weight="4"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stel een vraag"
+        android:id="@+id/ask_question_from_faq_button"
+        android:layout_gravity="end"
+        android:onClick="askQuestion"/>
+
+</LinearLayout>
