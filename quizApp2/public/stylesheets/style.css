@@ -1,0 +1,218 @@
+/* RESET */
+a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
+
+/* EVERYTHING ELSE */
+
+html {
+	-webkit-font-smoothing: antialiased !important;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+}
+
+body {
+	background-color: #fff;
+	padding: 50px;
+	font: 16px "Georgia", Helvetica, Arial, sans-serif;
+}
+
+ul {
+	list-style: none;
+}
+
+h1, h2 {
+	font-size: 30px;
+	letter-spacing: 1px;
+	line-height: 40px;
+	color: #343434;
+	padding: 10px 0;
+}
+
+p {
+	color: #343434;
+	padding: 2px 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+#main {
+	width: 100%;
+	position: relative;
+	padding-bottom: 30px;
+	margin: 0 15px;
+	min-width: 300px;
+}
+
+ul.teams {
+	padding: 0px;
+	max-width: 100%;
+	margin: 10px 0 30px;
+	overflow: hidden;
+}
+
+	ul.teams li {
+		float: left;
+		margin: 2px;
+		width: 20%;
+		max-width: 320px;
+		position: relative;
+		background-color: #f9f9f9;
+		padding-top: 20px;
+	}
+
+			.new-team {
+				background-color: rgba(52,52,52,0.2);
+				-webkit-transition: background-color .2s ease;
+								transition: background-color .2s ease;
+				text-align: center;
+				padding-bottom: 10px;
+			}
+			
+			.new-team h2 {
+				font-size: 1.6em;
+				line-height: 200px;
+			}
+
+				.new-team:hover {
+					z-index: 1000;
+					background-color: rgba(52,52,52,1);
+					-webkit-transition: background-color .2s ease;
+									transition: background-color .2s ease;
+				}
+
+				.new-team h2:hover {
+					color: #f0f0f0;
+					-webkit-transition: color .1s ease;
+									transition: color .1s ease;
+				}
+	
+	.teams li .image {
+		width: 110px;
+		height: 110px;
+		border: 1px solid transparent;
+		border-radius: 50%;
+		margin: 0 auto;
+	}
+
+	.teams li .content {
+		background-color: #f9f9f9;
+		padding: 15px;
+		text-shadow: 0px 1px 0px #fff;
+		text-align: center;
+	}
+
+		.content .team-name {
+			font-size: 18px;
+		}
+
+		.score-card {
+			font-size: 14px;
+			display: block;
+			color: #343443;
+			padding: 10px 0;
+		}
+
+			.score {
+				color: #4D76A3;
+			}
+
+	.teams li .actions {	
+		padding: 4px 15px;
+		background-color: #f0f0f0;
+		overflow: hidden;
+	}
+		
+		.teams li .actions a {
+			font-size: 13px;
+			color: #cfcfcf;
+			text-decoration: none;
+			margin-right: 10px;
+			-webkit-transition: color .2s ease;
+							transition: color .2s ease;
+		}
+
+			.teams li .actions a:hover {
+				color: #343434;
+				-webkit-transition: color .2s ease;
+								transition: color .2s ease;
+			}
+
+section {
+	padding: 40px 0 40px 10px;
+	max-width: 400px;
+	line-height: 25px;
+}
+
+.team-form {
+	width: 350px;
+}
+	
+	input, textarea {
+		width: 100%;
+		padding: 11px 10px 11px 13px;
+		display: block;
+		margin: 2px 0;
+		border: 0;
+		background: #f0f0f0;
+		font: 16px/1.4 "Helvetica Neue","HelveticaNeue",Helvetica,Arial,sans-serif;
+		-webkit-box-sizing: border-box;
+			 -moz-box-sizing: border-box;
+				    box-sizing: border-box;
+	}
+
+	textarea {
+		min-height: 200px;
+		height: auto;
+	}
+
+	:focus {
+		outline: none;
+	}
+
+	button {
+		width: 80px;
+		height: 30px;
+		border: 1px solid #f0f0f0;
+		background-color: #f0f0f0;
+		color: #343434;
+		font-size: 14px;
+	}
+
+		button.submit:hover {
+			background-color: #343434;
+			color: #f0f0f0;
+			cursor: pointer;
+			-webkit-transition: color .2s ease;
+							transition: color .2s ease;
+		}
+		
+		button.back,.submit {
+			margin-top: 20px;
+		}
+
+		button.back:hover {
+			background-color: #343434;
+			color: #f0f0f0;
+			cursor: pointer;
+			-webkit-transition: color .25s ease;
+							transition: color .25s ease;
+		}
+
+/* Chat */
+
+.chat {
+	margin: 30px 0;
+	border-top: 1px solid #343434;
+}
+
+#messages li, #team-events li {
+	padding: 5px 10px;
+}
+
+#messages li:nth-child(odd), #team-events li:nth-child(odd) {
+	background-color: #ccc;
+}
+
+input.msg {
+	width: 30%;
+}

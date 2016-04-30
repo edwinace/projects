@@ -1,0 +1,32 @@
+<h1>Teams</h1>
+<ul class="teams">
+	<li class="team" ng-repeat="team in teams | orderBy:highscore:true">
+		<div class="image" style="background: url('/images/{{team.id}}.png')"></div>
+		<div class="content">
+			<p class="team-name">{{team.name}}</p>
+		</div>
+		<div class="actions">
+			<p class="score-card">Score: <span class="score">{{team.score}}</span></p>
+			<!-- <a href="" class="points" ng-click="addPoint(team.id, team.score)">Add point</a> -->
+			<!-- <a href="" class="delete" ng-click="deleteTeam(team.id)">Forfeit</a> -->
+		</div>
+	</li>
+</ul>
+
+<div class="chat" ng-controller="ChatCtrl">
+	<h1>Chat</h1>
+	<ul id="messages">
+		<li ng-repeat="message in messages">
+			{{message.team}} says: {{message.content}}
+		</li>
+	</ul>
+	<ul id="team-events">
+		<li ng-repeat="teamEvent in teamEvents">
+			{{teamEvent}}
+		</li>
+	</ul>
+	<form action="">
+		<input type="text" class="msg" autocomplete="off" ng-model="msgForm.msg" placeholder="Type irrelevant messages here..." />
+		<button ng-click="sendMsg()">Send</button>
+	</form>
+</div>
