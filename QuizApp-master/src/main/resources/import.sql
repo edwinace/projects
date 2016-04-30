@@ -1,0 +1,38 @@
+INSERT INTO USER ("ID", "USER_ID", "PASSWORD") VALUES (null, 'user', 'pw');
+INSERT INTO USER_AUTHORITIES VALUES (null, 'ROLE_USER', 'user');
+
+
+INSERT INTO QUESTION VALUES(null, '문자열 "정답"을 선택해 주세요');
+
+INSERT INTO EXAMPLE VALUES(null, '정답', 1);
+INSERT INTO EXAMPLE VALUES(null, '정답 아님', 1);
+INSERT INTO EXAMPLE VALUES(null, '정답 NoNo', 1);
+INSERT INTO EXAMPLE VALUES(null, '정답 아니에요', 1);
+
+INSERT INTO QUESTION VALUES(null, '문자열 "정답"을 선택해 주세요');
+
+INSERT INTO EXAMPLE VALUES(null, '정답 아님', 2);
+INSERT INTO EXAMPLE VALUES(null, '정답', 2);
+INSERT INTO EXAMPLE VALUES(null, '정답 NoNo', 2);
+INSERT INTO EXAMPLE VALUES(null, '정답 아니에요', 2);
+
+INSERT INTO QUESTION VALUES(null, '문자열 "정답"을 선택해 주세요');
+
+INSERT INTO EXAMPLE VALUES(null, '정답 아님', 3);
+INSERT INTO EXAMPLE VALUES(null, '정답 NoNo', 3);
+INSERT INTO EXAMPLE VALUES(null, '정답', 3);
+INSERT INTO EXAMPLE VALUES(null, '정답 아니에요', 3);
+
+INSERT INTO QUESTION VALUES(null, '문자열 "정답"을 선택해 주세요');
+
+INSERT INTO EXAMPLE VALUES(null, '정답', 4);
+INSERT INTO EXAMPLE VALUES(null, '정답 아님', 4);
+INSERT INTO EXAMPLE VALUES(null, '정답 NoNo', 4);
+INSERT INTO EXAMPLE VALUES(null, '정답 아니에요', 4);
+
+INSERT INTO QUESTION VALUES(null, '문자열 "정답"을 선택해 주세요');
+
+INSERT INTO EXAMPLE VALUES(null, '정답 아님', 5);
+INSERT INTO EXAMPLE VALUES(null, '정답 NoNo', 5);
+INSERT INTO EXAMPLE VALUES(null, '정답 아니에요', 5);
+INSERT INTO EXAMPLE VALUES(null, '정답', 5);

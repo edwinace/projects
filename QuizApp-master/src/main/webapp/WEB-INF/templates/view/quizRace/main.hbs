@@ -1,0 +1,23 @@
+{{#partial "externalStyle" }}
+{{/partial}}
+
+{{#partial "externalBottomScript" }}
+<script src="/js/socket.io.js"></script>
+<script src="/js/quizBattle.js"></script>
+{{/partial}}
+
+{{# partial "content" }}
+<div ng-controller="quizBattleCtrl" data-ng-init="init()">
+	<div ng-class="{view:displayMessage, hide:!displayMessage, 'error-message':!success, 'success-message':success}" class="displayMessage">{[{displayMessage}]}</div>
+	<md-content layout-padding>
+		<h2 class="md-title">아래 준비됨을 눌러주세요</h2>
+		<md-button id="sendBtn" class="md-raised" data-ready="false">준비안됨 -> 준비됨 으로 변경</md-button>
+	</md-content>
+</div>
+{{/partial}}
+
+{{> routeDefault}}
+
+<!-- <input type="text" name="chat" /> -->
+<!-- var msg = $("input[name=chat]").val();
+socket.emit('msg', {msg:msg}); -->

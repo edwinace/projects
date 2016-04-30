@@ -1,0 +1,52 @@
+{{#partial "externalStyle" }}
+<style>
+	#rivalStatus {
+		width:100%;
+		height:50px;
+		background: #C2CD00;
+	}
+
+	#rivalStatus .stage {
+		width: 20%;
+		height: 50px;
+		line-height: 50px;
+		color:#fff;
+		font-weight: bold;
+		background: #5B8F43;
+		text-align: center;
+		font-size:20px;
+		-webkit-transition: margin-left 2s;
+		transition: margin-left 2s;
+	}
+</style>
+{{/partial}}
+
+{{#partial "externalBottomScript" }}
+<script src="/js/socket.io.js"></script>
+{{/partial}}
+
+{{# partial "content" }}
+<div ng-controller="quizBattleCtrl">
+	<div id="rivalStatus">
+		<div class="stage">1</div>
+	</div>
+	<div ng-class="{view:displayMessage, hide:!displayMessage, 'error-message':!success, 'success-message':success}" class="displayMessage">{[{displayMessage}]}</div> 
+	<md-content layout-padding>
+		문제 : {{question.description}}
+
+		<form ng-submit="submit()">
+			<md-radio-group ng-model="data.group1">
+				{{#each question.examples}}
+					<md-radio-button value="{{exampleSentence}}">{{exampleSentence}}</md-radio-button>
+				{{/each}}
+			</md-radio-group>
+			<md-button class="md-raised" type="submit">제출</md-button>
+	  	</form>
+	  	<div class="checkProgress" ng-show="checkProgressStatus">
+			<md-progress-circular md-mode="indeterminate"></md-progress-circular>
+		</div>
+	</md-content>
+</div>
+{{/partial}}
+
+{{> routeDefault}}

@@ -1,0 +1,11 @@
+<div ng-controller="gnbCtrl">
+    <div id="top-deco-line"><span>{{organization-name}}</span></div>
+	<md-toolbar id="top-bar" layout="row">
+		<div class="md-toolbar-tools">
+			<md-button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button">
+				<md-icon aria-label="Menu" md-svg-icon="./svg/menu.svg"></md-icon>
+			</md-button>
+			<a ui-sref="main"><h1>{{#if program-name}}{{program-name}}{{else}}Quiz Web App{{/if}}</h1></a>
+		</div>
+	</md-toolbar>
+</div>

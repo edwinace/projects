@@ -1,0 +1,14 @@
+# MAC OS
+.DS_Store
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+target/
+lib/
+classes/
+application.properties
+bower_components/
+bin/

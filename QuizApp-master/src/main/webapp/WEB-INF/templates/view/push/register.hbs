@@ -1,0 +1,22 @@
+{{#partial "externalStyle" }}
+<link rel="manifest" href="/js/gcm/manifest.json">
+{{/partial}}
+
+{{#partial "externalBottomScript" }}
+<script src="/js/gcm/main.js"></script>
+{{/partial}}
+
+{{# partial "content" }}
+<div ng-controller="pushCtrl" data-ng-init="init()">
+    <div ng-class="{view:displayMessage, hide:!displayMessage, 'error-message':!success, 'success-message':success}" class="displayMessage">{[{displayMessage}]}</div>
+    <md-content layout-padding>
+    <h2 class="md-title">푸시 알림 등록 안내</h2>
+    <p>아래 버튼 활성화를 통해 푸시 알림을 구독하거나 해지하세요</p>
+
+    <md-button id="push-subscription" class="md-raised md-primary">여기를 눌러 푸시 알림을 구독하세요</md-button>
+
+    </md-content>
+</div>
+{{/partial}}
+
+{{> routeDefault}}

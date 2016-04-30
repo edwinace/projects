@@ -1,0 +1,24 @@
+{{#partial "externalStyle" }}
+{{/partial}}
+
+{{#partial "externalBottomScript" }}
+<script src="/js/socket.io.js"></script>
+{{/partial}}
+
+{{# partial "content" }}
+<div ng-controller="todayQuizCtrl">
+	<div ng-class="{view:displayMessage, hide:!displayMessage, 'error-message':!success, 'success-message':success}" class="displayMessage">{[{displayMessage}]}</div>
+	<md-content layout-padding>
+
+	<h2 class="md-title">{{quizNum}}번 문제입니다</h2>
+	
+		<form ng-submit="submit()" ng-controller="todayQuizFormCtrl">
+    		
+    		
+			<md-button class="md-raised" type="submit">제출</md-button>
+  		</form>
+	</md-content>
+</div>
+{{/partial}}
+
+{{> routeDefault}}

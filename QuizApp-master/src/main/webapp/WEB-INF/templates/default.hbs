@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko" ng-app="QuizWebApp">
+	<head>
+		{{> partials/header }}
+		{{> partials/customStyle }}
+		{{#block "externalStyle" }}{{/block}}
+		{{#block "externalScript" }}{{/block}}
+ 	</head>
+	<body layout="column">
+	
+	{{> partials/gnb }}
+
+	<div layout="row" flex>
+		{{> partials/sideNav }}
+
+		<div layout="column" flex id="content" ui-view-container>
+			<md-content layout="column" flex>
+				<div ui-view></div>
+			</md-content>
+		</div>
+	</div>
+
+	{{> partials/bottomScript }}
+	{{#block "externalBottomScript" }}{{/block}}
+  </body>
+</html>

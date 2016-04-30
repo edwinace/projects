@@ -1,0 +1,15 @@
+<md-sidenav layout="column" id="side-nav" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+<div ng-controller="sideNavCtrl">
+	<div ng-click="closeSideNav()">
+			<md-toolbar id="site-logo" class="md-default-theme md-hue-2">
+                <h1 class="md-toolbar-tools">
+                    메뉴
+                </h1>
+            </md-toolbar>
+            <a ui-sref="login" ng-hide="logined"><md-subheader>로그인</md-subheader></a>
+            <a ui-sref="pushRegister"><md-subheader>푸시 등록</md-subheader></a>
+            <a ui-sref="todayQuiz"><md-subheader>오늘의 퀴즈</md-subheader></a>
+            <a ui-sref="quizRace"><md-subheader>퀴즈 경쟁</md-subheader></a>
+	</div>
+</div>
+</md-sidenav>

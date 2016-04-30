@@ -1,0 +1,29 @@
+{{#partial "externalStyle" }}
+{{/partial}}
+
+{{#partial "externalBottomScript" }}
+{{/partial}}
+
+{{# partial "content" }}
+<div ng-controller="todayQuizCtrl">
+	<div ng-class="{view:displayMessage, hide:!displayMessage, 'error-message':!success, 'success-message':success}" class="displayMessage">{[{displayMessage}]}</div>
+	<md-content layout-padding>
+
+	<h2 class="md-title">사과를 선택하세요</h2>
+	
+		<form ng-submit="submit()" ng-controller="todayQuizFormCtrl">
+    		
+    		<md-radio-group ng-model="data.group1">
+      		<md-radio-button value="Apple">Apple</md-radio-button>
+      		<md-radio-button value="Banana"> Banana </md-radio-button>
+      		<md-radio-button value="Mango">Mango</md-radio-button>
+    		</md-radio-group>
+
+			<p>답을 <span class="radioValue">{[{ data.group1 }]}</span> 로 제출하시려면 아래 제출 버튼을 누르세요</p>
+			<md-button class="md-raised" type="submit">제출</md-button>
+  		</form>
+	</md-content>
+</div>
+{{/partial}}
+
+{{> routeDefault}}
